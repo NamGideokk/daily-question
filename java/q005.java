@@ -40,6 +40,7 @@ public class q005 {
         return sum;
     }
 
+    // a와 b 대소 관계 없이 총 합 구하기
     static int totalSum3(int a, int b){
         int sum = 0;
 
