@@ -1,5 +1,8 @@
+import java.util.Random;
+
 public class q041 {
 
+    // Q16
     static void spira(int n){
 
     // 내 풀이
@@ -34,6 +37,7 @@ public class q041 {
     // }
 }
 
+    // Q17
     static void npira(int n){
         for(int i = 1; i <= n; i++){
 
