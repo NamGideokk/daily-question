@@ -4,24 +4,12 @@
 
 function solution(n, m) {
   let answer = [];
-  let gcd = 0; // 최대공약수
-  let lcm = 0; // 최소공배수
-
-  for (let i = 1; i <= n; i++) {
-    if (n % i == 0) {
-      answer.push(i);
-    }
-  }
-
-  for (let i = 1; i <= m; i++) {
-    if (m % i == 0) {
-      answer.push(i);
-    }
-  }
-
-  console.log(gcd);
-
-  return answer;
+  let greatest = (a, b) => {
+    if (b === 0) return a;
+    return greatest(b, a % b);
+  };
+  let least = (a, b) => (a * b) / greatest(a, b);
+  return [greatest(n, m), least(n, m)];
 }
 
-console.log(solution(3, 12));
+console.log(solution(2, 5));
