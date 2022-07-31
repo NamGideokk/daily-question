@@ -22,7 +22,7 @@ public class q040 {
                     num++;
                 } else {
                     num = 0;
-                }
+              }
                 sum += num;
             }
 
