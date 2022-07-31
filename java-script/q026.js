@@ -1,4 +1,4 @@
-// 같은 숫자는 싫어
+// 같은 숫자는 싫어 (프로그래머스)
 
 function solution(arr) {
   let answer = [];
