@@ -3,20 +3,21 @@
 function solution(arr, divisor) {
   let answer = [];
 
-  //   for (let number of arr) {
-  //     number % divisor === 0 ? answer.push(number) : answer.push();
-  //   }
-  //   return answer.length > 0 ? answer.sort((a, b) => a - b) : answer.push(-1);
-
   for (let number of arr) {
-    if (number % divisor === 0) {
-      answer.push(number);
-    }
+    number % divisor === 0 ? answer.push(number) : answer.push();
   }
+  return answer.length > 0 ? answer.sort((a, b) => a - b) : answer.push("-1");
+  // 정답이 제대로 출력되지 않아 아래에 다른 방식으로 다시 작성
 
-  if (answer.length === 0) answer.push(-1);
+  // for (let number of arr) {
+  //   if (number % divisor === 0) {
+  //     answer.push(number);
+  //   }
+  // }
 
-  return answer.sort((a, b) => a - b);
+  // if (answer.length === 0) answer.push(-1);
+
+  // return answer.sort((a, b) => a - b);
 }
 
 console.log(solution([5, 9, 7, 10], 5));
