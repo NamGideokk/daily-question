@@ -99,4 +99,42 @@ function solution(n, arr1, arr2) {
 }
 
 // console.log(solution(5, [9, 20, 28, 18, 11], [30, 1, 21, 17, 28]));
-console.log(solution(6, [46, 33, 33, 22, 31, 50], [27, 56, 19, 14, 14, 10]));
+// console.log(solution(6, [46, 33, 33, 22, 31, 50], [27, 56, 19, 14, 14, 10]));
+
+////////////////////////////////////
+//////////// padStart //////////////
+////////////////////////////////////
+// padStart 를 더한 약간의 수정
+
+function solution2(n, arr1, arr2) {
+  let answer = [];
+  let newArr1;
+  let newArr2;
+
+  newArr1 = arr1.map((value) => {
+    return value.toString(2).padStart(n, "0");
+  });
+
+  newArr2 = arr2.map((value) => {
+    return value.toString(2).padStart(n, "0");
+  });
+  // 두 배열을 한 반복문으로 2진법으로 변환하고 싶다.
+
+  for (let i = 0; i < n; i++) {
+    let box = "";
+
+    for (let j = 0; j < n; j++) {
+      if (newArr1[i].charAt(j) == "1" || newArr2[i].charAt(j) == "1") {
+        box += "#";
+      } else {
+        box += " ";
+      }
+    }
+    answer[i] = box;
+  }
+
+  return answer;
+}
+
+console.log(solution2(5, [9, 20, 28, 18, 11], [30, 1, 21, 17, 28]));
+console.log(solution2(6, [46, 33, 33, 22, 31, 50], [27, 56, 19, 14, 14, 10]));
