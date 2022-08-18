@@ -21,16 +21,16 @@
 function solution(dartResult) {
   var answer = 0;
   var arr = [];
-  var reg = /\d{1,2}[SDT][*#]?/g;
-  var numberReg = /\d+/g; // 점수 분리
-  var timesReg = /[SDT]/g; // Single, Double, Triple 분리
-  var awardReg = /[*#]/g; // 스타상, 아차상 분리
+  const reg = /[\d]+[SDT][*#]?/g;
+  const numberReg = /\d+/g; // 점수 분리
+  const timesReg = /[SDT]/g; // Single, Double, Triple 분리
+  const awardReg = /[*#]/g; // 스타상, 아차상 분리
 
   // var reg2 = /(([\d]+)([SDT])([*#]?))+/g;
 
   // 정규표현식을 써야할거 같다.
-  // var result = reg.exec(dartResult); // 1. 정규표현식 검사 (1D 추출)
-  // var score1 = dartResult.slice(0, result[0].length); // 2. 1D를 첫번째 점수 변수로 저장
+  // const result = reg.exec(dartResult); // 1. 정규표현식 검사 (1D 추출)
+  // const score1 = dartResult.slice(0, result[0].length); // 2. 1D를 첫번째 점수 변수로 저장
   // var newStr = dartResult.slice(score1.length); // 3. 1D 이후의 문자열 추출
   // var result2 = reg.exec(newStr); // 4. 두번째 정규표현식 검사 (2S# 추출)
 
@@ -43,12 +43,17 @@ function solution(dartResult) {
   // --------------------------------------------------------------------------
   // match 메서드는 첫 번째 인수로 받은 정규 표현식과 일치하는 문자열을
   // 순서대로 저장해서 배열로 반환한다. match 메서드는 원본 문자열을 수정하지 않는다.
-  var score = dartResult.match(reg);
+  const score = dartResult.match(reg);
+  console.log("score", score);
 
   score.forEach((value, idx) => {
-    var a = parseInt(value.match(numberReg).join("")); // 숫자 분리하여 a에 할당
-    var b = value.match(timesReg).join(""); // S, D, T 분리하여 b에 할당
-    var c = value.match(awardReg); // 스타상, 아차상 분리하여 c에 할당
+    let a = parseInt(value.match(numberReg).join("")); // 숫자 분리하여 a에 할당
+    let b = value.match(timesReg).join(""); // S, D, T 분리하여 b에 할당
+    let c = value.match(awardReg); // 스타상, 아차상 분리하여 c에 할당
+
+    // console.log("a : ", a);
+    // console.log("b : ", b);
+    // console.log("c : ", c);
 
     if (b === "S") {
       answer = a;
@@ -63,6 +68,8 @@ function solution(dartResult) {
     }
 
     arr.push(answer);
+
+    console.log("answer : ", answer);
 
     if (c === "*") {
       arr[idx] *= 2;
@@ -79,5 +86,5 @@ function solution(dartResult) {
 }
 
 console.log(solution("1S2D*3T")); // 2 + 8 + 27 = 37
-console.log(solution("1D2S#10S*")); // 1 + -2 + 10 = 9
-console.log(solution("1D2S0T")); // 1 + 2 + 0 = 3
+// console.log(solution("1D2S#10S*")); // 1 + -2 + 10 = 9
+// console.log(solution("1D2S0T")); // 1 + 2 + 0 = 3
